@@ -27,8 +27,8 @@ public class PollQuestion implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int displayOrder;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "quiz_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "quiz_id")
     @JsonBackReference
     private Quiz quiz;
 
