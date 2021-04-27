@@ -57,8 +57,8 @@
         <insert tableName="quiz">
             <column name="id" valueSequenceNext="seq_id_quiz"/>
             <column name="name_quiz" value="Football"/>
-            <column name="start_data" value="2021-03-24 16:48:05.592"/>
-            <column name="end_data" value="2021-03-24 16:48:05.591"/>
+            <column name="start_data" value="${now}"/>
+            <column name="end_data" value="${now}"/>
         </insert>
         <insert tableName="poll_question">
             <column name="id" valueSequenceNext="seq_id_poll"/>
@@ -73,8 +73,8 @@
         <insert tableName="quiz">
             <column name="id" valueSequenceNext="seq_id_quiz"/>
             <column name="name_quiz" value="Basketball"/>
-            <column name="start_data" value="2021-03-25 16:48:05.592"/>
-            <column name="end_data" value="2021-03-25 16:48:05.591"/>
+            <column name="start_data" value="${now}"/>
+            <column name="end_data" value="${now}"/>
         </insert>
 
         <insert tableName="poll_question">
