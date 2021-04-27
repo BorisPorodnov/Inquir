@@ -1,0 +1,5 @@
+net\porodnov\inquirer\model\PollQuestion.class
+net\porodnov\inquirer\InquirerApplication.class
+net\porodnov\inquirer\rest\QuizController.class
+net\porodnov\inquirer\service\QuizService.class
+net\porodnov\inquirer\model\Quiz.class
