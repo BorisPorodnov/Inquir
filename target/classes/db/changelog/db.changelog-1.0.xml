@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+
+    <changeSet author="Boris" id=" createSequence  ">
+        <createSequence sequenceName="seq_id_quiz" dataType="bigint" incrementBy="1" maxValue="10000" minValue="1"
+                        startValue="100"/>
+        <createSequence sequenceName="seq_id_poll" dataType="bigint" incrementBy="1" maxValue="10000" minValue="1"
+                        startValue="100"/>
+        <createSequence sequenceName="seq_displayOrder" dataType="int" incrementBy="1" maxValue="10000" minValue="1"
+                        startValue="100"/>
+    </changeSet>
+
+    <changeSet author="Boris" id="createTable table quiz">
+        <createTable tableName="quiz">
+            <column name="id" type="bigint" valueSequenceNext="nextval('seq_id_quiz')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_seq_id_quiz"/>
+            </column>
+            <column name="name_quiz" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_data" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_data" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Boris" id="createTable table poll_question">
+        <createTable tableName="poll_question">
+            <column name="id" type="bigint" valueSequenceNext="nextval('seq_id_poll')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_seq_id_poll_question"/>
+            </column>
+            <column name="text_question" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="display_order" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quiz_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_quiz_poll_question" references="quiz(id)"/>
+            </column>
+            <column name="activity" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Boris" id="insert in to table quiz">
+        <insert tableName="quiz">
+            <column name="id" valueSequenceNext="seq_id_quiz"/>
+            <column name="name_quiz" value="Football"/>
+            <column name="start_data" value="${now}"/>
+            <column name="end_data" value="${now}"/>
+        </insert>
+        <insert tableName="poll_question">
+            <column name="id" valueSequenceNext="seq_id_poll"/>
+            <column name="text_question" value="do you like gameShop"/>
+            <column name="display_order" valueSequenceNext="seq_displayOrder"/>
+            <column name="quiz_id" valueSequenceCurrent="seq_id_quiz"/>
+            <column name="activity" value="true"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="Boris" id="insert in to table  poll_question">
+        <insert tableName="quiz">
+            <column name="id" valueSequenceNext="seq_id_quiz"/>
+            <column name="name_quiz" value="Basketball"/>
+            <column name="start_data" value="${now}"/>
+            <column name="end_data" value="${now}"/>
+        </insert>
+
+        <insert tableName="poll_question">
+            <column name="id" valueSequenceNext="seq_id_poll"/>
+            <column name="text_question" value="adidas or nike"/>
+            <column name="display_order" valueSequenceNext="seq_displayOrder"/>
+            <column name="quiz_id" valueSequenceCurrent="seq_id_quiz"/>
+            <column name="activity" value="false"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

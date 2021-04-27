@@ -20,8 +20,7 @@ public class QuizService implements ServiceImpl {
 
     @Override
     public Quiz save(Quiz quiz) {
-        dao.save(quiz);
-        return quiz;
+        return dao.save(quiz);
     }
 
     @Override
@@ -33,4 +32,5 @@ public class QuizService implements ServiceImpl {
     public List<Quiz> getALL() {
         return dao.findAll();
     }
+
 }
