@@ -35,8 +35,7 @@ public class Quiz implements Serializable {
 
     @OneToMany(
         mappedBy = "quiz",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true
+        cascade = CascadeType.ALL
     )
     @JsonManagedReference
     private List<PollQuestion> pollQuestions = new ArrayList<>();

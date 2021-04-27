@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -22,13 +21,18 @@ public class QuizController {
     }
 
     @RequestMapping(value = "/post", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Quiz saveQuiz(@RequestBody @Valid Quiz quiz) {
+    public Quiz saveQuiz(@RequestBody Quiz quiz) {
         return this.quizService.save(quiz);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteById(@PathVariable("id") Quiz id) {
         quizService.delete(id);
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Quiz updateQuiz(@PathVariable Long id, @RequestBody Quiz quiz) {
+        return quizService.updateQuiz(id, quiz);
     }
 
 }

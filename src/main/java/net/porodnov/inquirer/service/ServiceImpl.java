@@ -8,9 +8,9 @@ import java.util.List;
 @Service
 public interface ServiceImpl {
 
-    Quiz getById(Long id);
-
     Quiz save(Quiz quiz);
+
+    Quiz updateQuiz(Long id, Quiz quiz);
 
     void delete(Quiz id);
 
