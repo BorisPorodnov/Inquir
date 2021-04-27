@@ -32,4 +32,6 @@ public class PollQuestion implements Serializable {
     @JsonBackReference
     private Quiz quiz;
 
+    private boolean activity;
+
 }

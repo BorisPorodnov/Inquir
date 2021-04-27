@@ -46,6 +46,9 @@
             <column name="quiz_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_quiz_poll_question" references="quiz(id)"/>
             </column>
+            <column name="activity" type="boolean">
+                <constraints nullable="true"/>
+            </column>
 
         </createTable>
     </changeSet>
@@ -62,6 +65,7 @@
             <column name="text_question" value="do you like gameShop"/>
             <column name="display_order" valueSequenceNext="seq_displayOrder"/>
             <column name="quiz_id" valueSequenceCurrent="seq_id_quiz"/>
+            <column name="activity" value="true"/>
         </insert>
     </changeSet>
 
@@ -78,6 +82,7 @@
             <column name="text_question" value="adidas or nike"/>
             <column name="display_order" valueSequenceNext="seq_displayOrder"/>
             <column name="quiz_id" valueSequenceCurrent="seq_id_quiz"/>
+            <column name="activity" value="false"/>
         </insert>
     </changeSet>
 
