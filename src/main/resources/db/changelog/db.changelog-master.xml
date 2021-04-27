@@ -47,9 +47,6 @@
                 <constraints nullable="false" foreignKeyName="fk_quiz_poll_question" references="quiz(id)"/>
             </column>
 
-            <column name="activity" type="boolean">
-                <constraints nullable="false"/>
-            </column>
         </createTable>
     </changeSet>
 

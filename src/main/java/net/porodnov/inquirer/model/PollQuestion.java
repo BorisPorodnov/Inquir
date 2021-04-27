@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -32,7 +31,5 @@ public class PollQuestion implements Serializable {
     @JoinColumn(name = "quiz_id", nullable = false)
     @JsonBackReference
     private Quiz quiz;
-
-    private boolean activity;
 
 }

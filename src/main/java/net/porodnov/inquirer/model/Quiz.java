@@ -1,7 +1,7 @@
 package net.porodnov.inquirer.model;
 
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -11,7 +11,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.*;
-
 
 @Entity
 @Getter

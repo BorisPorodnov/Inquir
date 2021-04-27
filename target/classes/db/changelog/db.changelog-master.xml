@@ -46,6 +46,7 @@
             <column name="quiz_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_quiz_poll_question" references="quiz(id)"/>
             </column>
+
         </createTable>
     </changeSet>
 

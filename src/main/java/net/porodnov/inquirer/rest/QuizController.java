@@ -4,9 +4,7 @@ import net.porodnov.inquirer.model.Quiz;
 import net.porodnov.inquirer.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -32,11 +30,5 @@ public class QuizController {
     public void deleteById(@PathVariable("id") Quiz id) {
         quizService.delete(id);
     }
-
-   @PutMapping("/updated")
-   public ResponseEntity<Quiz> updateQuiz(@RequestBody Quiz quiz, @PathVariable Long id){
-       return Optional op = new Op
-   }
-
 
 }

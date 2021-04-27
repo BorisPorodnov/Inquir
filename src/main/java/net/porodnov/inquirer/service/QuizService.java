@@ -1,6 +1,5 @@
 package net.porodnov.inquirer.service;
 
-import lombok.RequiredArgsConstructor;
 import net.porodnov.inquirer.dao.Dao;
 import net.porodnov.inquirer.model.Quiz;
 import org.springframework.beans.factory.annotation.Autowired;
