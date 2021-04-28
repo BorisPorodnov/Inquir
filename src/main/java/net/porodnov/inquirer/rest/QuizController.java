@@ -26,7 +26,7 @@ public class QuizController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void deleteById(@PathVariable("id") Quiz id) {
+    public void deleteById(@PathVariable("id") Long id) {
         quizService.delete(id);
     }
 

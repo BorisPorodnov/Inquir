@@ -15,6 +15,11 @@ public class QuizService implements ServiceImpl {
     private Dao dao;
 
     @Override
+    public Quiz getById(Long id) {
+        return dao.getOne(id);
+    }
+
+    @Override
     public Quiz save(Quiz quiz) {
         return dao.save(quiz);
     }
@@ -31,8 +36,8 @@ public class QuizService implements ServiceImpl {
     }
 
     @Override
-    public void delete(Quiz id) {
-        dao.delete(id);
+    public void delete(Long id) {
+        dao.deleteById(id);
     }
 
     @Override
