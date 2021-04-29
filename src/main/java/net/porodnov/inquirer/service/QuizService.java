@@ -47,7 +47,7 @@ public class QuizService implements ServiceImpl {
         return dao.findAll();
     }
 
-    public List<Quiz> getALLByData(Filter filter) {
+    public List<Quiz> getALLByName(Filter filter) {
 
         List<Quiz> quizList = dao.findAll();
 

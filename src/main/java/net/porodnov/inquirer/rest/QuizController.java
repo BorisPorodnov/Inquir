@@ -37,7 +37,7 @@ public class QuizController {
 
     @GetMapping("/filter")
     public List<Quiz> getAllQuizByData(@RequestBody Filter filter) {
-        return quizService.getALLByData(filter);
+        return quizService.getALLByName(filter);
     }
 
 }
