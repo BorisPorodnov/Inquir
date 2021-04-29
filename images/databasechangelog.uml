@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>35adeeb2-50ef-4be4-afce-d4a3237b2fe9.TABLE:postgres.public.databasechangelog</OriginalElement>
+  <nodes>
+    <node x="-203.0" y="-175.0">35adeeb2-50ef-4be4-afce-d4a3237b2fe9.TABLE:postgres.public.databasechangelog</node>
+    <node x="-206.0" y="218.0">35adeeb2-50ef-4be4-afce-d4a3237b2fe9.TABLE:postgres.public.databasechangeloglock</node>
+    <node x="224.0" y="-115.0">35adeeb2-50ef-4be4-afce-d4a3237b2fe9.TABLE:postgres.public.quiz</node>
+    <node x="218.0" y="171.0">35adeeb2-50ef-4be4-afce-d4a3237b2fe9.TABLE:postgres.public.poll_question</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="35adeeb2-50ef-4be4-afce-d4a3237b2fe9.TABLE:postgres.public.poll_question" target="35adeeb2-50ef-4be4-afce-d4a3237b2fe9.TABLE:postgres.public.quiz">
+      <point x="0.0" y="-71.5" />
+      <point x="0.0" y="60.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="93.0" y="82.0" />
+  <SelectedNodes>
+    <node>35adeeb2-50ef-4be4-afce-d4a3237b2fe9.TABLE:postgres.public.quiz</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

@@ -1,62 +1,21 @@
 package net.porodnov.inquirer.service;
 
-import net.porodnov.inquirer.dao.Dao;
-import net.porodnov.inquirer.model.Filter;
 import net.porodnov.inquirer.model.Quiz;
-import org.apache.velocity.exception.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class QuizService implements ServiceImpl {
+public interface QuizService {
 
-    @Autowired
-    private Dao dao;
+    Quiz getOne(Long id);
 
-    @Override
-    public Quiz getById(Long id) {
-        return dao.getOne(id);
-    }
+    Quiz save(Quiz quiz);
 
-    @Override
-    public Quiz save(Quiz quiz) {
-        return dao.save(quiz);
-    }
+    Quiz updateQuiz(Long id, Quiz quiz);
 
-    @Override
-    public Quiz updateQuiz(Long id, Quiz quiz) {
-        return dao.findById(id).map(it -> {
-            it.setNameQuiz(quiz.getNameQuiz());
-            it.setStartData(quiz.getStartData());
-            it.setEndData(quiz.getEndData());
-            it.setPollQuestions(quiz.getPollQuestions());
-            return dao.save(it);
-        }).orElseThrow(() -> new ResourceNotFoundException("id " + id + " not found"));
-    }
+    void delete(Long id);
 
-    @Override
-    public void delete(Long id) {
-        dao.deleteById(id);
-    }
+    List<Quiz> getALL();
 
-    @Override
-    public List<Quiz> getALL() {
-        return dao.findAll();
-    }
-
-    public List<Quiz> getALLByName(Filter filter) {
-
-        List<Quiz> quizList = dao.findAll();
-
-        List<Quiz> quizzes = new ArrayList<>();
-
-        quizList.forEach(q -> {
-            if (q.getNameQuiz().equals(filter.getNameQuiz()))
-                quizzes.add(q);
-        });
-        return quizzes;
-    }
 }

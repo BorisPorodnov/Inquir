@@ -2,10 +2,7 @@ package net.porodnov.inquirer.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,9 +10,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
-@Getter
-@Setter
-@ToString
+@Data
 @RequiredArgsConstructor
 @Table(name = "quiz")
 public class Quiz implements Serializable {
@@ -38,5 +33,5 @@ public class Quiz implements Serializable {
         cascade = CascadeType.ALL
     )
     @JsonManagedReference
-    private List<PollQuestion> pollQuestions;
+    private List<PollQuestion> pollQuestions = new ArrayList<>();
 }

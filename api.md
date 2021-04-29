@@ -1,9 +1,12 @@
 ```
 /api/v1/quiz
 
-    GET /search
+    GET /all
 
-POST /adding
+    GET /{id}
+
+
+POST
 {
         "nameQuiz": "TEST",
         "startData": "2021-04-29T01:03:37.359655",
@@ -38,7 +41,7 @@ PUT /{id}
     }
 
 
-GET /filter
+POST /search
            {
            "nameQuiz": "Basketball"
            }
