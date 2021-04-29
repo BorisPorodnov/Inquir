@@ -15,7 +15,7 @@ public class QuizController {
     @Autowired
     private QuizService quizService;
 
-    @GetMapping(value = "")
+    @GetMapping(value = "/search")
     public List<Quiz> getAll() {
         return quizService.getALL();
     }
