@@ -3,9 +3,6 @@
 
     GET /all
 
-    GET /{id}
-
-
 POST
 {
         "nameQuiz": "TEST",
