@@ -1,5 +1,6 @@
 package net.porodnov.inquirer.rest;
 
+import net.porodnov.inquirer.model.Filter;
 import net.porodnov.inquirer.model.Quiz;
 import net.porodnov.inquirer.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class QuizController {
     @PutMapping(value = "{id}")
     public Quiz updateQuiz(@PathVariable Long id, @RequestBody Quiz quiz) {
         return quizService.updateQuiz(id, quiz);
+    }
+
+    @GetMapping("/filter")
+    public List<Quiz> getAllQuizByData(@RequestBody Filter filter) {
+        return quizService.getALLByData(filter);
     }
 
 }

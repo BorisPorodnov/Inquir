@@ -10,9 +10,9 @@
         <createSequence sequenceName="seq_id_quiz" dataType="bigint" incrementBy="1" maxValue="10000" minValue="1"
                         startValue="100"/>
         <createSequence sequenceName="seq_id_poll" dataType="bigint" incrementBy="1" maxValue="10000" minValue="1"
-                        startValue="100"/>
+                        startValue="1000"/>
         <createSequence sequenceName="seq_displayOrder" dataType="int" incrementBy="1" maxValue="10000" minValue="1"
-                        startValue="100"/>
+                        startValue="1"/>
     </changeSet>
 
     <changeSet author="porodnov.boris" id="1.0.1">
@@ -62,7 +62,7 @@
         </insert>
         <insert tableName="poll_question">
             <column name="id" valueSequenceNext="seq_id_poll"/>
-            <column name="text_question" value="do you like gameShop"/>
+            <column name="text_question" value="do you like play Football"/>
             <column name="display_order" valueSequenceNext="seq_displayOrder"/>
             <column name="quiz_id" valueSequenceCurrent="seq_id_quiz"/>
             <column name="activity" value="true"/>
@@ -79,7 +79,7 @@
 
         <insert tableName="poll_question">
             <column name="id" valueSequenceNext="seq_id_poll"/>
-            <column name="text_question" value="adidas or nike"/>
+            <column name="text_question" value="do you like play Basketball"/>
             <column name="display_order" valueSequenceNext="seq_displayOrder"/>
             <column name="quiz_id" valueSequenceCurrent="seq_id_quiz"/>
             <column name="activity" value="false"/>

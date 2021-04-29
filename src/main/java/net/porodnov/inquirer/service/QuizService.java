@@ -1,11 +1,13 @@
 package net.porodnov.inquirer.service;
 
 import net.porodnov.inquirer.dao.Dao;
+import net.porodnov.inquirer.model.Filter;
 import net.porodnov.inquirer.model.Quiz;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,4 +47,16 @@ public class QuizService implements ServiceImpl {
         return dao.findAll();
     }
 
+    public List<Quiz> getALLByData(Filter filter) {
+
+        List<Quiz> quizList = dao.findAll();
+
+        List<Quiz> quizzes = new ArrayList<>();
+
+        quizList.forEach(q -> {
+            if (q.getNameQuiz().equals(filter.getNameQuiz()))
+                quizzes.add(q);
+        });
+        return quizzes;
+    }
 }

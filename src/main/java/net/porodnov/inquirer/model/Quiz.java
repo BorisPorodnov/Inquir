@@ -38,5 +38,5 @@ public class Quiz implements Serializable {
         cascade = CascadeType.ALL
     )
     @JsonManagedReference
-    private List<PollQuestion> pollQuestions = new ArrayList<>();
+    private List<PollQuestion> pollQuestions;
 }
