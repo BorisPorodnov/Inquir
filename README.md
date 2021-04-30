@@ -2,8 +2,6 @@
 
 Created REST - service manage polls.
 
-Data structure:
-
 The REST service provides the following methods: 
 - Get all quiz
 - Create quiz
