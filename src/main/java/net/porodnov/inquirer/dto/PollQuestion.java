@@ -1,3 +1,4 @@
+/*
 package net.porodnov.inquirer.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -13,7 +14,7 @@ import java.io.Serializable;
 @Setter
 @RequiredArgsConstructor
 @Table(name = "poll_question")
-public class PollQuestion implements Serializable {
+public class PollQuestion implements Seriali zable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,4 +34,4 @@ public class PollQuestion implements Serializable {
 
     private boolean activity;
 
-}
+}*/
