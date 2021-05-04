@@ -5,37 +5,36 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-
     <changeSet author="porodnov.boris" id="1.0.0">
         <createSequence sequenceName="seq_id_quiz" dataType="bigint" incrementBy="1" maxValue="10000" minValue="1"
-                        startValue="100"/>
+                        startValue="55"/>
         <createSequence sequenceName="seq_id_poll" dataType="bigint" incrementBy="1" maxValue="10000" minValue="1"
-                        startValue="1000"/>
+                        startValue="64"/>
         <createSequence sequenceName="seq_displayOrder" dataType="int" incrementBy="1" maxValue="10000" minValue="1"
                         startValue="1"/>
     </changeSet>
 
     <changeSet author="porodnov.boris" id="1.0.1">
-        <createTable tableName="quiz">
+        <createTable tableName="quiz_entity">
             <column name="id" type="bigint" valueSequenceNext="nextval('seq_id_quiz')">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_seq_id_quiz"/>
             </column>
-            <column name="name_quiz" type="varchar(50)">
+            <column name="name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="start_data" type="timestamp">
+            <column name="start" type="timestamp">
                 <constraints nullable="false"/>
             </column>
-            <column name="end_data" type="timestamp">
+            <column name="endd" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activity" type="boolean">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-    </changeSet>
-
-    <changeSet author="porodnov.boris" id="1.0.2">
-        <createTable tableName="poll_question">
+        <createTable tableName="poll_question_entity">
             <column name="id" type="bigint" valueSequenceNext="nextval('seq_id_poll')">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_seq_id_poll_question"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_id_poll_question"/>
             </column>
             <column name="text_question" type="varchar(250)">
                 <constraints nullable="false"/>
@@ -44,46 +43,24 @@
                 <constraints nullable="false"/>
             </column>
             <column name="quiz_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_quiz_poll_question" references="quiz(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_poll_question" references="quiz_entity(id)"/>
             </column>
-            <column name="activity" type="boolean">
-                <constraints nullable="true"/>
-            </column>
-
         </createTable>
     </changeSet>
 
-    <changeSet author="porodnov.boris" id="1.0.3">
-        <insert tableName="quiz">
+    <changeSet author="porodnov.boris" id="1.0.2">
+        <insert tableName="quiz_entity">
             <column name="id" valueSequenceNext="seq_id_quiz"/>
-            <column name="name_quiz" value="Football"/>
-            <column name="start_data" value="${now}"/>
-            <column name="end_data" value="${now}"/>
-        </insert>
-        <insert tableName="poll_question">
-            <column name="id" valueSequenceNext="seq_id_poll"/>
-            <column name="text_question" value="do you like play Football"/>
-            <column name="display_order" valueSequenceNext="seq_displayOrder"/>
-            <column name="quiz_id" valueSequenceCurrent="seq_id_quiz"/>
+            <column name="name" value="Опрос людей на тему: какие магазины вы любите?"/>
+            <column name="start" value="${now}"/>
+            <column name="endd" value="${now}"/>
             <column name="activity" value="true"/>
         </insert>
-    </changeSet>
-
-    <changeSet author="porodnov.boris" id="1.0.4">
-        <insert tableName="quiz">
-            <column name="id" valueSequenceNext="seq_id_quiz"/>
-            <column name="name_quiz" value="Basketball"/>
-            <column name="start_data" value="${now}"/>
-            <column name="end_data" value="${now}"/>
-        </insert>
-
-        <insert tableName="poll_question">
+        <insert tableName="poll_question_entity">
             <column name="id" valueSequenceNext="seq_id_poll"/>
-            <column name="text_question" value="do you like play Basketball"/>
+            <column name="text_question" value="Вам нравится магазин лента?"/>
             <column name="display_order" valueSequenceNext="seq_displayOrder"/>
             <column name="quiz_id" valueSequenceCurrent="seq_id_quiz"/>
-            <column name="activity" value="false"/>
         </insert>
     </changeSet>
-
 </databaseChangeLog>

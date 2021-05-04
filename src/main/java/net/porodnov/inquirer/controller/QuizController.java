@@ -1,44 +1,67 @@
 package net.porodnov.inquirer.controller;
 
-import lombok.RequiredArgsConstructor;
-import net.porodnov.inquirer.model.Filter;
-import net.porodnov.inquirer.model.Quiz;
-import net.porodnov.inquirer.service.QuizServiceImpl;
+import net.porodnov.inquirer.Exception.QuizAlreadyExistExseption;
+import net.porodnov.inquirer.Exception.QuizNotFoundException;
+import net.porodnov.inquirer.dao.QuizDao;
+import net.porodnov.inquirer.entity.QuizEntity;
+import net.porodnov.inquirer.service.QuizService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/v1/quiz")
 public class QuizController {
 
-    private final QuizServiceImpl quizService;
+    private final QuizService quizService;
 
-    @GetMapping("/all")
-    public List<Quiz> getAll() {
-        return quizService.getALL();
+    public QuizController(QuizService quizService, QuizDao quizDao) {
+        this.quizService = quizService;
+    }
+
+
+    @PutMapping("{id}")
+    public ResponseEntity updateQuiz(@PathVariable Long id, @RequestBody QuizEntity entity) {
+        return ResponseEntity.ok(quizService.updateQuizBy(id, entity));
+    }
+
+
+    @PostMapping("/{id}")
+    public ResponseEntity getQuizBy(@PathVariable Long id) {
+        return ResponseEntity.ok(quizService.getBy(id));
+    }
+
+    @DeleteMapping("{id}")
+
+    public ResponseEntity deleteBy(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(quizService.deleteBy(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Произошла ошибка");
+        }
     }
 
 
     @PostMapping
-    public Quiz saveQuiz(@RequestBody Quiz quiz) {
-        return this.quizService.save(quiz);
+    public ResponseEntity create(@RequestBody QuizEntity quizEntity) {
+        try {
+            quizService.save(quizEntity);
+            return ResponseEntity.ok("Опрос был успешно создан в БазеДанных");
+        } catch (QuizAlreadyExistExseption e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Произошла ошибка");
+        }
     }
 
-    @DeleteMapping("{id}")
-    public void deleteById(@PathVariable Long id) {
-        quizService.delete(id);
-    }
-
-    @PutMapping("{id}")
-    public Quiz updateQuiz(@PathVariable Long id, @RequestBody Quiz quiz) {
-        return quizService.updateQuiz(id, quiz);
-    }
-
-    @PostMapping("/search")
-    public List<Quiz> getBy(@RequestBody Filter filter) {
-        return quizService.get(filter);
+    @GetMapping
+    public ResponseEntity getQuiz() {
+        try {
+            return ResponseEntity.ok(quizService.getAllQuiz());
+        } catch (QuizNotFoundException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Произошла ишибка");
+        }
     }
 
 }
