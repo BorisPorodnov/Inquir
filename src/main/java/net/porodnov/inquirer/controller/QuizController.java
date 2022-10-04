@@ -5,13 +5,14 @@ import net.porodnov.inquirer.Exception.QuizNotFoundException;
 import net.porodnov.inquirer.dao.QuizDao;
 import net.porodnov.inquirer.entity.QuizEntity;
 import net.porodnov.inquirer.service.QuizService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/quiz")
 public class QuizController {
-
+    @Autowired
     private final QuizService quizService;
 
     public QuizController(QuizService quizService, QuizDao quizDao) {
